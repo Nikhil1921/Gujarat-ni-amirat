@@ -120,7 +120,7 @@ class Home extends CI_Controller {
             [
                 'field' => 'email',
                 'label' => 'Email Address',
-                'rules' => 'required|max_length[50]|valid_email|is_unique[users.email]',
+                'rules' => 'max_length[50]|valid_email|is_unique[users.email]',
                 'errors' => [
                     'required' => "%s is required",
                     'valid_email' => "%s is invalid",
@@ -131,7 +131,7 @@ class Home extends CI_Controller {
             [
                 'field' => 'school_name',
                 'label' => 'School / College Name',
-                'rules' => 'required|max_length[100]',
+                'rules' => 'max_length[100]',
                 'errors' => [
                     'required' => "%s is required",
                     'max_length' => "Max 100 chars allowed.",
@@ -161,10 +161,12 @@ class Home extends CI_Controller {
                 'email'  => $this->input->post('email'),
                 'password' => md5($this->input->post('password')),
                 'otp' => rand(1000, 9999),
-                'otp' => 9999,
                 'valid' => date('Y-m-d H:i:s', strtotime('+5 minutes')),
                 'created_at' => date('Y-m-d H:i:s')
             ];
+
+            $sms = "Dear users ".$post['otp']." is the OTP for your login AMIRAT APP. for any query pls contact : 9737987455. Thanks for visit 'gujarat ni amirat' by kappali.";
+            send_sms($sms, $this->input->post('mobile'));
 
             $this->session->set_userdata($post);
             $response = ['error' => false, 'form' => 'check_otp','message' => "OTP send success."];
@@ -202,11 +204,12 @@ class Home extends CI_Controller {
             }else{
                 $post = [
                     'otp' => rand(1000, 9999),
-                    'otp' => 9999,
                     'valid' => date('Y-m-d H:i:s', strtotime('+5 minutes')),
                 ];
                 
                 if($this->main->update(['id' => $id], $post, 'users')){
+                    $sms = "Dear users ".$post['otp']." is the OTP for your login AMIRAT APP. for any query pls contact : 9737987455. Thanks for visit 'gujarat ni amirat' by kappali.";
+                    send_sms($sms, $this->input->post('mobile'));
                     $post['check_id'] = $id;
                     $this->session->set_userdata($post);
                     $response = ['error' => false, 'message' => "Signup success.", 'form' => 'check_otp'];
@@ -956,6 +959,16 @@ class Home extends CI_Controller {
         $data['message'] = "Save this Transaction ID for future use if amount debited from your bank.";
 
         return $this->template->load(front('template'), front('payment'), $data);
+    }
+
+    public function reels() 
+    { 
+        $data['title'] = "reels";
+        $data['name'] = "reels";
+        $data['videos'] = array_diff(scandir('videos/'), array('.', '..'));
+
+        return $this->load->view(front('reels'), $data);
+        // return $this->template->load(front('template'), front('reels'), $data);
     }
 
     public function is_multi_array( $arr ) { 

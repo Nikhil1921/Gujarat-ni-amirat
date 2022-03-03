@@ -17,6 +17,7 @@ $route['adminPanel/nation']['post'] = 'adminPanel/nation/get';
 $route['adminPanel/newsletter']['post'] = 'adminPanel/newsletter/get';
 $route['adminPanel/youcanwrite']['post'] = 'adminPanel/youcanwrite/get';
 $route['adminPanel/bioWorld']['post'] = 'adminPanel/bioWorld/get';
+$route['adminPanel/users']['post'] = 'adminPanel/users/get';
 
 $route['adminPanel/profile'] = 'adminPanel/home/profile';
 $route['adminPanel/changePassword'] = 'adminPanel/home/changePassword';
@@ -55,4 +56,5 @@ $route['check-otp']['post'] = 'home/check_otp';
 $route['forgot-password']['post'] = 'home/forgot_password';
 $route['change-password']['post'] = 'home/change_password';
 $route['get-form'] = 'home/get_form';
+$route['reels'] = 'home/reels';
 $route['(:any)'] = 'home/blog/$1';

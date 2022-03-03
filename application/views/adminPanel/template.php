@@ -99,6 +99,9 @@
                 <?= anchor(admin('newsletter'), '<i class="nav-icon fas fa-list"></i><p>Newsletter</p>', 'class="nav-link '.(($name == 'newsletter') ? 'active' : '').'"') ?>
               </li>
               <li class="nav-item">
+                <?= anchor(admin('users'), '<i class="nav-icon fas fa-users"></i><p>Users</p>', 'class="nav-link '.(($name == 'users') ? 'active' : '').'"') ?>
+              </li>
+              <li class="nav-item">
                 <?= anchor(admin('youcanwrite'), '<i class="nav-icon fas fa-list"></i><p>You can write</p>', 'class="nav-link '.(($name == 'youcanwrite') ? 'active' : '').'"') ?>
               </li>
               <li class="nav-item">

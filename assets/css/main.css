@@ -6380,3 +6380,7 @@ body {
     float: left;
     width: 100%;
 }
+.more-blogs {
+    font-size: 20px;
+    font-weight: bold;
+}

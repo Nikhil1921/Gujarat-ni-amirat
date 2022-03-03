@@ -58,20 +58,25 @@ if ( ! function_exists('re'))
 
 if ( ! function_exists('send_sms'))
 {
-    function send_sms($sms, $mobile)
+    function send_sms($sms, $mobile, $template='1307164180964485525')
     {
+        
         if ($_SERVER['HTTP_HOST'] != 'localhost' && ENVIRONMENT === 'production') 
         {
-            $url = 'key=35F6302ED228F8&routeid=415&type=text&contacts='.$mobile.'&senderid=DENSTK&msg='.urlencode($sms);
+            $from = 'AMIRAT';
+            $key = 'gK66xZ4cokWuhIB5Dz9WaA';
 
-            $base_URL ='http://kutility.in/app/smsapi/index?'.$url;
-            
+            "key=".$key."&campaign=12397&routeid=31&type=text&contacts=".$contact."&senderid=".$from."&msg=".urlencode($sms)."&template_id=".$template;
+            $url = "APIKey=".$key."&senderid=".$from."&channel=2&DCS=0&flashsms=0&number=".$mobile."&text=".urlencode($sms)."&route=31&EntityId=1301162529225568073&dlttemplateid=".$template;
+            $base_URL = 'https://www.smsgatewayhub.com/api/mt/SendSMS?'.$url;
+
             $curl_handle = curl_init();
             curl_setopt($curl_handle,CURLOPT_URL,$base_URL);
             curl_setopt($curl_handle,CURLOPT_CONNECTTIMEOUT,2);
             curl_setopt($curl_handle,CURLOPT_RETURNTRANSFER,1);
-            $result = curl_exec($curl_handle);        
+            $result = curl_exec($curl_handle);
             curl_close($curl_handle);
+            return $result;
         }
     }
 }

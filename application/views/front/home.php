@@ -71,6 +71,9 @@
 					</div>
 					<?php endforeach ?>
 				</div>
+				<div class="text-center p-4 more-blogs">
+					<a class="text-dark blink-title" href="<?= base_url('blogs') ?>">See more blogs</a>
+				</div>
 			</div>
 		</div>
 	</div>

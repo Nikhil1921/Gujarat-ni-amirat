@@ -29,7 +29,10 @@
 			<?php foreach ($cats as $cat): ?>
 			<?php if ($cat['blogs']): ?>
 			<div class="blog-deck check-color" data-color="<?= $cat['background'] ?>" style="background-color: <?= $cat['background'] ?>">
-				<p class="cat-name-list"><?= $cat['cat_name'] ?></p>
+				<p class="cat-name-list">
+					<?= $cat['cat_name'] ?>
+					<small class="float-right"><a class="text-dark" href="<?= $cat['cat_slug'] ?>">See more blogs</a></small>
+				</p>
 				<div class="owl-carousel">
 					<?php foreach ($cat['blogs'] as $blog): ?>
 					<div class="item">
