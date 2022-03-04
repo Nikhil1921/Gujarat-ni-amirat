@@ -104,9 +104,9 @@ body {
 }
 
 .user__avatar {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  /* border-radius: 50%; */
+  width: 30%;
+  height: 30%;
 }
 
 .videoFooter__text h3 {
@@ -178,45 +178,24 @@ body {
     <div class="video">
     <!-- header starts -->
     <div class="videoHeader">
-        <span class="material-icons"> arrow_back </span>
-        <h3>Reels</h3>
-        <span class="material-icons"> camera_alt </span>
+        <span class="material-icons">  </span>
+        <h3><?= APP_NAME ?></h3>
+        <span class="material-icons">  </span>
     </div>
     <!-- header ends -->
 
     
-    <video class="video__player" src="<?= base_url('videos/'.$v) ?>"></video>
+    <video class="video__player" src="<?= base_url('videos/'.$v['video']) ?>"></video>
     
-
     <!-- footer starts -->
     <div class="videoFooter">
         <div class="videoFooter__text">
-        <img class="user__avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="" />
-        <h3>Somanath Goudar • <button>Follow</button></h3>
+        <img class="user__avatar" src="<?= base_url('assets/images/favicon.png') ?>" alt="" />
+        
         </div>
 
         <div class="videoFooter__ticker">
-        <span class="material-icons"> music_note </span>
-        <marquee>Song Name</marquee>
-        </div>
-
-        <div class="videoFooter__actions">
-        <div class="videoFooter__actionsLeft">
-            <span class="material-icons"> favorite </span>
-            <span class="material-icons"> mode_comment </span>
-            <span class="material-icons"> send </span>
-            <span class="material-icons"> more_horiz </span>
-        </div>
-        <div class="videoFooter__actionsRight">
-            <div class="videoFooter__stat">
-            <span class="material-icons"> favorite </span>
-            <p>12</p>
-            </div>
-            <div class="videoFooter__stat">
-            <span class="material-icons"> mode_comment </span>
-            <p>20</p>
-            </div>
-        </div>
+        <marquee><h3><?= $v['title'] ?></h3></marquee>
         </div>
     </div>
     <!-- footer ends -->
@@ -228,13 +207,13 @@ body {
     const videos = document.querySelectorAll('video');
 
     for (const video of videos) {
-    video.addEventListener('click', function () {
-        if (video.paused) {
-        video.play();
-        } else {
-        video.pause();
-        }
-    });
+      video.addEventListener('click', function () {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+      });
     }
 </script>
 </body>

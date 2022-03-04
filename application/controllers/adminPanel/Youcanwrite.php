@@ -27,12 +27,12 @@ class Youcanwrite extends MY_Controller {
         $fetch_data = $this->main->make_datatables('you_can_write_model');
         $sr = $_POST['start'] + 1;
         $data = array();
-
+        
         foreach($fetch_data as $row)  
         {  
             $sub_array = array();
             $sub_array[] = $sr;
-            $sub_array[] = ucwords($row->name);
+            $sub_array[] = $row->name;
             $sub_array[] = $row->mobile;
             $sub_array[] = $row->email;
             $sub_array[] = $row->topic;

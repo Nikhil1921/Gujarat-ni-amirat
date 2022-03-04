@@ -69,16 +69,25 @@
               <li class="nav-item">
                 <?= anchor(admin('dashboard'), '<i class="nav-icon fas fa-home"></i><p>Dashboard</p>', 'class="nav-link '.(($name == 'dashboard') ? 'active' : '').'"') ?>
               </li>
-              <li class="nav-item has-treeview <?= ($name == 'blog' || $name == 'blog_category') ? 'menu-open' : '' ?>">
+              <li class="nav-item has-treeview <?= in_array($name, ['blog', 'blog_category', 'videos']) ? 'menu-open' : '' ?>">
                 <?= anchor(admin(), '<i class="nav-icon fas fa-book"></i><p>Blog<i class="right fas fa-angle-left"></i></p>', 'class="nav-link '.(($name == 'blog' || $name == 'blog_category') ? 'active' : '' ).'"') ?>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <?= anchor(admin('blog'), '<i class="far fa-circle nav-icon"></i><p>Blog</p>', 'class="nav-link '.(($name == 'blog') ? 'active' : '').'"') ?>
+                    <?= anchor(admin('videos'), '<i class="far fa-circle nav-icon"></i><p>Videos</p>', 'class="nav-link '.(($name == 'videos') ? 'active' : '').'"') ?>
                   </li>
+                  <!-- <li class="nav-item">
+                    <?= anchor(admin('blog'), '<i class="far fa-circle nav-icon"></i><p>Blog</p>', 'class="nav-link '.(($name == 'blog') ? 'active' : '').'"') ?>
+                  </li> -->
                   <li class="nav-item">
                     <?= anchor(admin('blogCategory'), '<i class="far fa-circle nav-icon"></i><p>Blog Category</p>', 'class="nav-link '.(($name == 'blog_category') ? 'active' : '').'"') ?>
                   </li>
                 </ul>
+              </li>
+              <li class="nav-item">
+                <?= anchor(admin('questions'), '<i class="nav-icon fa fa-question-circle"></i><p>Questions</p>', 'class="nav-link '.(($name == 'questions') ? 'active' : '').'"') ?>
+              </li>
+              <li class="nav-item">
+                <?= anchor(admin('events'), '<i class="nav-icon fa fa-file"></i><p>Events</p>', 'class="nav-link '.(($name == 'events') ? 'active' : '').'"') ?>
               </li>
               <li class="nav-item">
                 <?= anchor(admin('interview'), '<i class="nav-icon fas fa-question"></i><p>Interview</p>', 'class="nav-link '.(($name == 'interview') ? 'active' : '').'"') ?>

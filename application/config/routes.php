@@ -18,6 +18,9 @@ $route['adminPanel/newsletter']['post'] = 'adminPanel/newsletter/get';
 $route['adminPanel/youcanwrite']['post'] = 'adminPanel/youcanwrite/get';
 $route['adminPanel/bioWorld']['post'] = 'adminPanel/bioWorld/get';
 $route['adminPanel/users']['post'] = 'adminPanel/users/get';
+$route['adminPanel/videos']['post'] = 'adminPanel/videos/get';
+$route['adminPanel/questions']['post'] = 'adminPanel/questions/get';
+$route['adminPanel/events']['post'] = 'adminPanel/events/get';
 
 $route['adminPanel/profile'] = 'adminPanel/home/profile';
 $route['adminPanel/changePassword'] = 'adminPanel/home/changePassword';
@@ -26,7 +29,7 @@ $route['adminPanel/checkOtp'] = 'adminPanel/login/checkOtp';
 $route['adminPanel/backup'] = 'adminPanel/home/backup';
 
 
-$route['blogs'] = 'home/blogs';
+// $route['blogs'] = 'home/blogs';
 $route['join-us']['get'] = 'home/join_us';
 $route['join-us']['post'] = 'home/join_us_post';
 $route['upcoming'] = 'home/upcoming';
@@ -43,6 +46,7 @@ $route['cultural-visit'] = 'home/cultural_visit';
 $route['inside-book/(:any)'] = 'home/inside_book/$1';
 
 $route['you-can-write']['get'] = 'home/you_can_write';
+$route['events'] = 'home/events';
 $route['you-can-write/(:any)']['get'] = 'home/you_can_write/$1';
 $route['you-can-write']['post'] = 'home/you_can_write_post';
 $route['interview'] = 'home/interview';
@@ -57,4 +61,5 @@ $route['forgot-password']['post'] = 'home/forgot_password';
 $route['change-password']['post'] = 'home/change_password';
 $route['get-form'] = 'home/get_form';
 $route['reels'] = 'home/reels';
-$route['(:any)'] = 'home/blog/$1';
+$route['(:any)'] = 'home/videos/$1';
+// $route['(:any)'] = 'home/blog/$1';

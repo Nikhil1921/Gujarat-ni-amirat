@@ -707,7 +707,12 @@ class Home extends CI_Controller {
 
     public function you_can_write($slug='')
     {
-        $this->load->model('write_model');
+        $question = $this->main->getall('questions', 'id, question, option_a, option_b, option_c, option_d', ['is_deleted' => 0]);
+        $data['title'] = 'you can write';
+        $data['name'] = 'you_can_write';
+        $data['questions'] = $question;
+        return $this->template->load(front('template'), front('you_can_writes'), $data);
+        /* $this->load->model('write_model');
         $blog = $this->write_model->getBlogs($slug);
         
         if ($blog)
@@ -734,10 +739,129 @@ class Home extends CI_Controller {
                 return $this->template->load(front('template'), front('you_can_write'), $data);
             }
             else
-                return $this->load->view('error_404');
+                return $this->load->view('error_404'); */
+    }
+
+    public function events()
+    {
+        $validate = [
+            [
+                'field' => 'name',
+                'label' => 'Name',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => "%s is Required"
+                ]
+            ],
+            [
+                'field' => 'phone',
+                'label' => 'Phone number',
+                'rules' => 'required|numeric|exact_length[10]',
+                'errors' => [
+                    'required' => "%s is Required",
+                    'numeric' => "%s is Invalid",
+                    'exact_length' => "%s is Invalid",
+                ]
+            ],
+            [
+                'field' => 'school',
+                'label' => 'School name',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => "%s is Required"
+                ]
+            ],
+            [
+                'field' => 'city',
+                'label' => 'City',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => "%s is Required"
+                ]
+            ]
+        ];
+
+        $this->form_validation->set_rules($validate);
+        if ($this->form_validation->run() == FALSE) {
+            $blog = $this->main->getall('events', 'title, description, from_date, from_time, to_date, to_time', ['is_deleted' => 0]);
+            $data['title'] = 'you can write';
+            $data['name'] = 'events';
+            $data['blogs'] = $blog;
+            return $this->template->load(front('template'), front('events'), $data);
+        }else{
+            $post = [
+                'name'  => $this->input->post('name'),
+                'phone' => $this->input->post('phone'),
+                'school' => $this->input->post('school'),
+                'city' => $this->input->post('city'),
+                'u_id' => $this->session->user_id
+            ];
+            
+            $id = $this->main->add($post, 'participants');
+
+            flashMsg($id, "Response added.", "Response not added. Try again.", 'events');
+        }
     }
 
     public function you_can_write_post()
+    {
+        $validate = [
+            [
+                'field' => 'name',
+                'label' => 'Name',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => "%s is Required"
+                ]
+            ],
+            [
+                'field' => 'phone',
+                'label' => 'Phone number',
+                'rules' => 'required|numeric|exact_length[10]',
+                'errors' => [
+                    'required' => "%s is Required",
+                    'numeric' => "%s is Invalid",
+                    'exact_length' => "%s is Invalid",
+                ]
+            ],
+            [
+                'field' => 'school',
+                'label' => 'School name',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => "%s is Required"
+                ]
+            ],
+            [
+                'field' => 'city',
+                'label' => 'City',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => "%s is Required"
+                ]
+            ]
+        ];
+        
+        $this->form_validation->set_rules($validate);
+        if ($this->form_validation->run() == FALSE) {
+            return $this->you_can_write();
+        }else{
+            $post = [
+                'name'  => $this->input->post('name'),
+                'phone' => $this->input->post('phone'),
+                'school' => $this->input->post('school'),
+                'city' => $this->input->post('city'),
+                'answers' => json_encode($this->input->post('ans')),
+                'u_id' => $this->session->user_id
+            ];
+
+            $id = $this->main->add($post, 'quiz_ans');
+
+            flashMsg($id, "Answers saved success.", "Response not added. Try again.", 'you-can-write');
+        }
+    }
+
+    /* public function you_can_write_post()
     {
         $validate = [
             [
@@ -812,7 +936,7 @@ class Home extends CI_Controller {
 
             flashMsg($id, "આપશ્રીએ રજૂ કરેલ રાષ્ટ્રલક્ષી વિચાર ને YOU CAN WRITE page ના latest post પરથી અન્ય મિત્રોને share કરી શકશો. આ સાથેજ અભિયાનમાં જોડાવા અન્યને પણ પ્રેરણા આપી શકો છો. આપનું certificate ટૂંક સમયમાં આપના mail.i.d પર મળશે. આભાર", "Response Not Added. Try again.", 'you-can-write');
         }
-    }
+    } */
 
     protected function uploadImage($unlink='')
     {
@@ -961,13 +1085,35 @@ class Home extends CI_Controller {
         return $this->template->load(front('template'), front('payment'), $data);
     }
 
-    public function reels() 
+    public function videos($slug) 
     { 
-        $data['title'] = "reels";
-        $data['name'] = "reels";
-        $data['videos'] = array_diff(scandir('videos/'), array('.', '..'));
+        $this->load->model('video_model', 'blog');
+        $blog = $this->blog->getVideos($slug);
+        $data['blogs'] = $blog;
+        $data['cats'] = $this->main->getall('blog_category', 'id, cat_name, cat_slug, CONCAT("'.assets('images/blog-category/').'", cat_image) cat_image, background', ['is_deleted' => 0], 'id ASC');
+        
+        if ($blog) {
+            $data['cat'] = $this->main->get('blog_category', 'cat_name, background, cat_color', ['cat_slug' => $slug]);
+            $data['title'] = $data['cat']['cat_name'];
+            $data['name'] = $data['cat']['cat_name'];
+            
+            return $this->template->load(front('template'), front('videos'), $data);
+        } else{
+            $data['cat'] = $this->main->get('blog_category', 'cat_name, background, cat_color', ['cat_slug' => $slug]);
+            if ($data['cat']) {
+                $data['title'] = $data['cat']['cat_name'];
+                $data['name'] = $data['cat']['cat_name'];
+                return $this->template->load(front('template'), front('videos'), $data);
+            }else
+                return $this->load->view('error_404');
+        }
 
-        return $this->load->view(front('reels'), $data);
+        /* $data['title'] = "reels";
+        $data['name'] = "reels";
+        $data['videos'] = $this->main->getall('videos', 'title, video', ['is_deleted' => 0]); */
+        // $data['videos'] = array_diff(scandir('videos/'), array('.', '..'));
+
+        // return $this->load->view(front('reels'), $data);
         // return $this->template->load(front('template'), front('reels'), $data);
     }
 

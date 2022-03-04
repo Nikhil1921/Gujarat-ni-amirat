@@ -23,7 +23,7 @@
 					<a href="<?= base_url('cultural-visit') ?>"><img src="<?= assets('images/bio-new.png') ?>"></a>
 				</div>
 				<div class="cat-2 callout-title">
-					<a href="<?= base_url('blogs') ?>"><img src="<?= assets('images/blog1.png') ?>"></a>
+					<a href="<?= base_url('you-can-write') ?>"><img src="<?= assets('images/blog1.png') ?>"></a>
 				</div>
 				<div class="cat-3 callout-title">
 					<a href="<?= base_url('join-us') ?>"><img src="<?= assets('images/Frame 70.png') ?>"></a>
