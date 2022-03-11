@@ -57,7 +57,7 @@
 				<?php endforeach ?>
 			</div>
 			<div class="blog-slider">
-				<div class="owl-carousel">
+				<!-- <div class="owl-carousel">
 					<?php foreach ($blogs as $blog): ?>
 					<div class="item">
 						<div class="blog-on-home blog-on-home-slider-div">
@@ -70,9 +70,11 @@
 						</div>
 					</div>
 					<?php endforeach ?>
-				</div>
-				<div class="text-center p-4 more-blogs">
-					<a class="text-dark blink-title" href="<?= base_url('blogs') ?>">See more blogs</a>
+				</div> -->
+				<div class="text-center pb-4 more-blogs">
+					<a class="text-dark blink-title mr-5" href="<?= base_url('blogs') ?>">See more blogs</a>
+					<a class="text-dark blink-title mr-5" href="<?= base_url('questions-answers') ?>">Questions answers</a>
+					<a class="text-dark blink-title" href="<?= base_url('videos') ?>">See more videos</a>
 				</div>
 			</div>
 		</div>
@@ -91,7 +93,7 @@
 		</div>
 		<div class="col-lg-6 col-md-12 col-sm-12">
 			<div class="latest-video-2">
-				<h1 class="text-center">Interaction</h1>
+				<h1 class="text-center">Our Programme</h1>
 				<div class="video-part text-center">
 					<?php foreach ($interviews as $k => $interview): ?>
 					<?php if ($k > 0): ?>
@@ -145,8 +147,8 @@
 			<div class="col-lg-6 col-md-12 col-sm-12">
 				<div class="contact">
 					<h2 class="text-center">Contact Us</h2>
-					<h2 class="text-center">Kappali</h2>
-					<p class="text-center"><!-- The incredible Gujarat ના માધ્યમ દ્વારા પ્રથમ તબક્કામાં પ્રકાશિત થયેલ પુસ્તકનું મુલ્ય ૨૫૦ છે. કમાણીના ઉદેશ્ય કરતા ગુજરાત રાજ્યના પ્રસાર-પ્રચારને આધારીત આ પુસ્તક ગુજરાતના દરેક ખૂણે મળી રહે તેવા ઉદેશ્ય હેઠળ POST ની સુવિધા અને તેનો નિભાવ ખર્ચ THE INCREDIBLE GUJARAT પર રહેશે.-->જીવનમાં એક અવસર મળવાનો છે અને જો તે અવસર સમાજ, ધર્મ કે દેશના હિત માટે ખર્ચ કરી શકીયે તો ઘર આંગણે જ ગંગા - જમના - સરસ્વતી છે, માટે 'ગુજરાતની અમીરાત' સાથે પ્રત્યક્ષ અને પરોક્ષ જોડાઈ ન માત્ર પોતાના માટે પણ સાથે દેશ ઉન્નતિ માટે ભાગીદાર બની સમાજની રક્ષા કરીયે. યદા... યદા...હિ...ધર્મસ્ય<br><br>Cont. no: 9737987455 <br>Email Id : Kappali.info@gmail.com
+					
+					<p class="text-center"><!-- The incredible Gujarat ના માધ્યમ દ્વારા પ્રથમ તબક્કામાં પ્રકાશિત થયેલ પુસ્તકનું મુલ્ય ૨૫૦ છે. કમાણીના ઉદેશ્ય કરતા ગુજરાત રાજ્યના પ્રસાર-પ્રચારને આધારીત આ પુસ્તક ગુજરાતના દરેક ખૂણે મળી રહે તેવા ઉદેશ્ય હેઠળ POST ની સુવિધા અને તેનો નિભાવ ખર્ચ THE INCREDIBLE GUJARAT પર રહેશે.-->જીવનમાં એક અવસર મળવાનો છે અને જો તે અવસર સમાજ, ધર્મ કે દેશના હિત માટે ખર્ચ કરી શકીયે તો ઘર આંગણે જ ગંગા - જમના - સરસ્વતી છે, માટે 'ગુજરાતની અમીરાત' સાથે પ્રત્યક્ષ અને પરોક્ષ જોડાઈ ન માત્ર પોતાના માટે પણ સાથે દેશ ઉન્નતિ માટે ભાગીદાર બની સમાજની રક્ષા કરીયે. યદા... યદા...હિ...ધર્મસ્ય<br><br>Cont. no: 9737987455 <br>Email Id : gujaratniamirat@gmail.com
 					</p>
 				</div>
 			</div>
@@ -157,7 +159,7 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-6">
 					<div class="copywrite">
-						<p>Copyrights © 2021 Gujarat Ni Amirat. All rights reserved | Powered by Densetek InfoTech</p>
+						<p>Copyrights © <?= date('Y') ?> Gujarat Ni Amirat. All rights reserved | Powered by Densetek InfoTech</p>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4">

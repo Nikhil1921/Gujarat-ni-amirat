@@ -21,15 +21,14 @@ $route['adminPanel/users']['post'] = 'adminPanel/users/get';
 $route['adminPanel/videos']['post'] = 'adminPanel/videos/get';
 $route['adminPanel/questions']['post'] = 'adminPanel/questions/get';
 $route['adminPanel/events']['post'] = 'adminPanel/events/get';
+$route['adminPanel/que_ans']['post'] = 'adminPanel/que_ans/get';
 
 $route['adminPanel/profile'] = 'adminPanel/home/profile';
 $route['adminPanel/changePassword'] = 'adminPanel/home/changePassword';
 $route['adminPanel/forgotPassword'] = 'adminPanel/login/forgotPassword';
 $route['adminPanel/checkOtp'] = 'adminPanel/login/checkOtp';
 $route['adminPanel/backup'] = 'adminPanel/home/backup';
-
-
-// $route['blogs'] = 'home/blogs';
+$route['blogs'] = 'home/blogs';
 $route['join-us']['get'] = 'home/join_us';
 $route['join-us']['post'] = 'home/join_us_post';
 $route['upcoming'] = 'home/upcoming';
@@ -60,6 +59,6 @@ $route['check-otp']['post'] = 'home/check_otp';
 $route['forgot-password']['post'] = 'home/forgot_password';
 $route['change-password']['post'] = 'home/change_password';
 $route['get-form'] = 'home/get_form';
-$route['reels'] = 'home/reels';
-$route['(:any)'] = 'home/videos/$1';
-// $route['(:any)'] = 'home/blog/$1';
+$route['questions-answers'] = 'home/questions_answers';
+$route['videos(/:any)?'] = 'home/video$1';
+$route['(:any)'] = 'home/blog/$1';

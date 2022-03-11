@@ -75,9 +75,9 @@
                   <li class="nav-item">
                     <?= anchor(admin('videos'), '<i class="far fa-circle nav-icon"></i><p>Videos</p>', 'class="nav-link '.(($name == 'videos') ? 'active' : '').'"') ?>
                   </li>
-                  <!-- <li class="nav-item">
+                  <li class="nav-item">
                     <?= anchor(admin('blog'), '<i class="far fa-circle nav-icon"></i><p>Blog</p>', 'class="nav-link '.(($name == 'blog') ? 'active' : '').'"') ?>
-                  </li> -->
+                  </li>
                   <li class="nav-item">
                     <?= anchor(admin('blogCategory'), '<i class="far fa-circle nav-icon"></i><p>Blog Category</p>', 'class="nav-link '.(($name == 'blog_category') ? 'active' : '').'"') ?>
                   </li>
@@ -85,6 +85,9 @@
               </li>
               <li class="nav-item">
                 <?= anchor(admin('questions'), '<i class="nav-icon fa fa-question-circle"></i><p>Questions</p>', 'class="nav-link '.(($name == 'questions') ? 'active' : '').'"') ?>
+              </li>
+              <li class="nav-item">
+                <?= anchor(admin('que_ans'), '<i class="nav-icon fa fa-question-circle"></i><p>Questions Answers</p>', 'class="nav-link '.(($name == 'que_ans') ? 'active' : '').'"') ?>
               </li>
               <li class="nav-item">
                 <?= anchor(admin('events'), '<i class="nav-icon fa fa-file"></i><p>Events</p>', 'class="nav-link '.(($name == 'events') ? 'active' : '').'"') ?>
@@ -110,12 +113,12 @@
               <li class="nav-item">
                 <?= anchor(admin('users'), '<i class="nav-icon fas fa-users"></i><p>Users</p>', 'class="nav-link '.(($name == 'users') ? 'active' : '').'"') ?>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <?= anchor(admin('youcanwrite'), '<i class="nav-icon fas fa-list"></i><p>You can write</p>', 'class="nav-link '.(($name == 'youcanwrite') ? 'active' : '').'"') ?>
-              </li>
-              <li class="nav-item">
+              </li> -->
+              <!-- <li class="nav-item">
                 <?= anchor(admin('bioWorld'), '<i class="nav-icon fas fa-list"></i><p>Bio World</p>', 'class="nav-link '.(($name == 'bioWorld') ? 'active' : '').'"') ?>
-              </li>
+              </li> -->
             </ul>
           </nav>
         </div>

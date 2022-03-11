@@ -8,7 +8,7 @@ class Home extends CI_Controller {
         $data['title'] = 'home';
         $data['name'] = 'home';
         $data['cats'] = $this->main->getall('blog_category', 'cat_name, cat_slug, CONCAT("'.assets('images/blog-category/').'", cat_image) cat_image', ['is_deleted' => 0], 'id ASC');
-        $data['blogs'] = $this->main->getall('blog', 'title, blog_slug, CONCAT("'.assets('blog/').'", image) image', ['is_deleted' => 0], 'id DESC', '3');
+        /* $data['blogs'] = $this->main->getall('blog', 'title, blog_slug, CONCAT("'.assets('blog/').'", image) image', ['is_deleted' => 0], 'id DESC', '3'); */
         $data['interviews'] = $this->main->getall('interview', 'title, interview_slug, youtube_url', ['is_deleted' => 0], 'id DESC', '3');
         
         $validate = [
@@ -763,14 +763,14 @@ class Home extends CI_Controller {
                     'exact_length' => "%s is Invalid",
                 ]
             ],
-            [
+            /* [
                 'field' => 'school',
                 'label' => 'School name',
                 'rules' => 'required',
                 'errors' => [
                     'required' => "%s is Required"
                 ]
-            ],
+            ], */
             [
                 'field' => 'city',
                 'label' => 'City',
@@ -792,7 +792,8 @@ class Home extends CI_Controller {
             $post = [
                 'name'  => $this->input->post('name'),
                 'phone' => $this->input->post('phone'),
-                'school' => $this->input->post('school'),
+                'school' => "NA",
+                // 'school' => $this->input->post('school'),
                 'city' => $this->input->post('city'),
                 'u_id' => $this->session->user_id
             ];
@@ -1085,25 +1086,25 @@ class Home extends CI_Controller {
         return $this->template->load(front('template'), front('payment'), $data);
     }
 
-    public function videos($slug) 
+    public function video($slug='') 
     { 
         $this->load->model('video_model', 'blog');
         $blog = $this->blog->getVideos($slug);
         $data['blogs'] = $blog;
-        $data['cats'] = $this->main->getall('blog_category', 'id, cat_name, cat_slug, CONCAT("'.assets('images/blog-category/').'", cat_image) cat_image, background', ['is_deleted' => 0], 'id ASC');
+        $data['cats'] = $this->main->getall('blog_category', 'id, cat_name, cat_slug, CONCAT("'.assets('images/blog-category/').'", cat_image) cat_image, background, cat_color', ['is_deleted' => 0], 'id ASC');
         
         if ($blog) {
-            $data['cat'] = $this->main->get('blog_category', 'cat_name, background, cat_color', ['cat_slug' => $slug]);
+            $data['cat'] = $this->main->get('blog_category', 'cat_name, background, cat_color', ['cat_slug' => $blog[0]['cat_slug']]);
             $data['title'] = $data['cat']['cat_name'];
             $data['name'] = $data['cat']['cat_name'];
             
-            return $this->template->load(front('template'), front('videos'), $data);
+            return $this->template->load(front('template'), front('video'), $data);
         } else{
             $data['cat'] = $this->main->get('blog_category', 'cat_name, background, cat_color', ['cat_slug' => $slug]);
             if ($data['cat']) {
                 $data['title'] = $data['cat']['cat_name'];
                 $data['name'] = $data['cat']['cat_name'];
-                return $this->template->load(front('template'), front('videos'), $data);
+                return $this->template->load(front('template'), front('video'), $data);
             }else
                 return $this->load->view('error_404');
         }
@@ -1115,6 +1116,17 @@ class Home extends CI_Controller {
 
         // return $this->load->view(front('reels'), $data);
         // return $this->template->load(front('template'), front('reels'), $data);
+    }
+
+    public function questions_answers()
+    { 
+        $questions = $this->main->getall('questions_answers', 'questions, answers', ['is_deleted' => 0]);
+        
+        $data['title'] = 'questions answers';
+        $data['name'] = 'questions_answers';
+        $data['questions'] = $questions;
+        return $this->template->load(front('template'), front('questions_answers'), $data);
+        
     }
 
     public function is_multi_array( $arr ) { 

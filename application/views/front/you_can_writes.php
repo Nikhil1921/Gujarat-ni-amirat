@@ -51,7 +51,7 @@
 										<?= form_error('phone') ?>
 									</div>
 									<div class="form-group col-md-6">
-										<label for="school"><b>School name</b></label>
+										<label for="school"><b>School / college name</b></label>
 										<input type="text" name="school" class="form-control" placeholder="Enter your school name" value="<?= set_value('school') ?>" maxlength="150">
 										<?= form_error('school') ?>
 									</div>

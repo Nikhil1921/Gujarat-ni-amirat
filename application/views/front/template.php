@@ -56,7 +56,7 @@
 								<a href="<?= base_url('cultural-visit') ?>">Cultural Visit</a><hr>
 								<!-- <a href="<?= base_url('blogs') ?>">Blog Vlog</a><hr> -->
 								<a href="<?= base_url('join-us') ?>">Join us for save india</a><hr>
-								<!-- <a href="<?= base_url('') ?>">Events</a><hr class="line"> -->
+								<a href="<?= base_url('you-can-write') ?>">You can write</a><hr class="line">
 								<a href="<?= base_url() ?>">Home</a>
 							</div>
 						</div>

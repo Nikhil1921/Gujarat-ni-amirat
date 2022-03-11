@@ -2,25 +2,20 @@
 /**
 *
 */
-class Video_model extends CI_Model 
+class Que_ans_model extends CI_Model 
 {
-	
-	public function __construct()
-	{
-		parent::__construct();
-	}
 
-	public $table = "videos v";  
-	public $select_column = ['v.id', 'v.title'];
-	public $search_column = ['v.title'];
-    public $order_column = [null, 'v.title', null];
-	public $order = ['v.id' => 'DESC'];
+	public $table = "questions_answers q";  
+	public $select_column = ['q.id', 'q.questions'];
+	public $search_column = ['q.questions'];
+    public $order_column = [null, 'q.questions', null];
+	public $order = ['q.id' => 'DESC'];
 
 	public function make_query()  
 	{  
         $this->db->select($this->select_column)	
             ->from($this->table)
-            ->where(['v.is_deleted' => 0]);
+            ->where(['q.is_deleted' => 0]);
 
         $i = 0;
 
@@ -54,17 +49,4 @@ class Video_model extends CI_Model
             $this->db->order_by(key($order), $order[key($order)]);
         }
 	}
-
-    public function getVideos($slug)
-    {
-        $this->db->select('v.title, v.video, description, c.cat_slug')
-                        ->from($this->table)
-                        ->where(['v.is_deleted' => 0]);
-        
-        if ($slug) $this->db->where(['c.cat_slug' => $slug]);
-        
-        return $this->db->join('blog_category c', 'c.id = v.cat_id')
-                        ->get()
-                        ->result_array();
-    }
 }
