@@ -50,7 +50,7 @@
 			<div class="main-header-cat text-center mobile-scroll responsive">
 				<?php foreach ($cats as $cat): ?>
 				<div class="main-cat-horizontal">
-					<a href="<?= base_url($cat['cat_slug']) ?>">
+					<a href="<?= base_url("videos/".$cat['cat_slug']) ?>">
 						<img src="<?= $cat['cat_image'] ?>">
 					</a>
 				</div>

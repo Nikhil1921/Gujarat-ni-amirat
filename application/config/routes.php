@@ -22,6 +22,8 @@ $route['adminPanel/videos']['post'] = 'adminPanel/videos/get';
 $route['adminPanel/questions']['post'] = 'adminPanel/questions/get';
 $route['adminPanel/events']['post'] = 'adminPanel/events/get';
 $route['adminPanel/que_ans']['post'] = 'adminPanel/que_ans/get';
+$route['adminPanel/participants']['post'] = 'adminPanel/participants/get';
+$route['adminPanel/quiz']['post'] = 'adminPanel/quiz/get';
 
 $route['adminPanel/profile'] = 'adminPanel/home/profile';
 $route['adminPanel/changePassword'] = 'adminPanel/home/changePassword';

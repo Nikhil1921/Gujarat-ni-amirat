@@ -7,11 +7,11 @@
 					<div class="text-center"><h3>Answer the given questions here</h3></div>
 					<?php if($questions): ?>
 						<div class="write-here">
-							<p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, animi voluptas recusandae culpa neque consequatur architecto hic. Soluta, eum! Fugit atque nisi nostrum nobis minima rerum doloremque a hic numquam? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum cum similique ipsum fuga, magnam omnis quidem nisi. Maxime delectus explicabo aut soluta, ut, architecto dignissimos facere magnam, quae incidunt aspernatur.</p>
+							<p class="text-justify"><?= $this->main->check('site_text', ['page' => 'ycw'], 'content') ?></p>
 							<?= form_open('you-can-write') ?>
 								<div class="row">
 									<?php foreach($questions as $v): ?>
-										<div class="form-group">
+										<div class="form-group col-12">
 											<label><b><?= $v['question'] ?></b></label><br>
 											<div class="form-check">
 												<input checked class="form-check-input" type="radio" name="ans[<?= $v['id'] ?>]" <?= set_radio('ans['.$v['id'].']', 'A') ?> value="A" id="<?= $v['id'] ?>_a">
@@ -64,6 +64,23 @@
 								<button type="submit" class="btn btn-primary">Submit</button>
 							<?= form_close() ?>
 						</div>
+						<label><b>Winners</b></label><br>
+						<table class="table">
+							<thead>
+								<th>SR #</th>
+								<th>NAME</th>
+								<th>SCHOOL</th>
+							</thead>
+							<tbody>
+								<?php foreach($winners as $k => $v): ?>
+								<tr>
+									<td><?= ++$k ?></td>
+									<td><?= $v['name'] ?></td>
+									<td><?= $v['school'] ?></td>
+								</tr>
+								<?php endforeach ?>
+							</tbody>
+						</table>
 					<?php else: ?>
 						<div class="col-md-12 p-5 text-center">
 							<img src="<?= assets('images/coming-soon.png') ?>" <?= ($this->agent->is_mobile()) ? 'width="100%"' : '' ?>>

@@ -87,10 +87,16 @@
                 <?= anchor(admin('questions'), '<i class="nav-icon fa fa-question-circle"></i><p>Questions</p>', 'class="nav-link '.(($name == 'questions') ? 'active' : '').'"') ?>
               </li>
               <li class="nav-item">
+                <?= anchor(admin('quiz'), '<i class="nav-icon fa fa-question-circle"></i><p>Quiz Users</p>', 'class="nav-link '.(($name == 'quiz') ? 'active' : '').'"') ?>
+              </li>
+              <li class="nav-item">
                 <?= anchor(admin('que_ans'), '<i class="nav-icon fa fa-question-circle"></i><p>Questions Answers</p>', 'class="nav-link '.(($name == 'que_ans') ? 'active' : '').'"') ?>
               </li>
               <li class="nav-item">
                 <?= anchor(admin('events'), '<i class="nav-icon fa fa-file"></i><p>Events</p>', 'class="nav-link '.(($name == 'events') ? 'active' : '').'"') ?>
+              </li>
+              <li class="nav-item">
+                <?= anchor(admin('participants'), '<i class="nav-icon fa fa-users"></i><p>Event participants</p>', 'class="nav-link '.(($name == 'participants') ? 'active' : '').'"') ?>
               </li>
               <li class="nav-item">
                 <?= anchor(admin('interview'), '<i class="nav-icon fas fa-question"></i><p>Interview</p>', 'class="nav-link '.(($name == 'interview') ? 'active' : '').'"') ?>

@@ -117,7 +117,7 @@ class Home extends CI_Controller {
                     'is_unique'    => '%s already exists.'
                 ]
             ],
-            [
+            /* [
                 'field' => 'email',
                 'label' => 'Email Address',
                 'rules' => 'max_length[50]|valid_email|is_unique[users.email]',
@@ -127,8 +127,8 @@ class Home extends CI_Controller {
                     'max_length' => "Max 50 chars allowed.",
                     'is_unique'    => '%s already exists.'
                 ]
-            ],
-            [
+            ], */
+            /* [
                 'field' => 'school_name',
                 'label' => 'School / College Name',
                 'rules' => 'max_length[100]',
@@ -136,7 +136,7 @@ class Home extends CI_Controller {
                     'required' => "%s is required",
                     'max_length' => "Max 100 chars allowed.",
                 ]
-            ],
+            ], */
             [
                 'field' => 'password',
                 'label' => 'Password',
@@ -155,14 +155,16 @@ class Home extends CI_Controller {
             $response = ['error' => true, 'message' => str_replace(array("\r\n", "\n", "\r"), '<br>', (validation_errors()))];
         }else{
             $post = [
-                'name'  => $this->input->post('name'),
-                'mobile'  => $this->input->post('mobile'),
-                'school_name'  => $this->input->post('school_name'),
-                'email'  => $this->input->post('email'),
-                'password' => md5($this->input->post('password')),
-                'otp' => rand(1000, 9999),
-                'valid' => date('Y-m-d H:i:s', strtotime('+5 minutes')),
-                'created_at' => date('Y-m-d H:i:s')
+                'name'        => $this->input->post('name'),
+                'mobile'      => $this->input->post('mobile'),
+                'school_name' => "NA",
+                'email'       => "NA",
+                // 'email'       => $this->input->post('email'),
+                'password'    => md5($this->input->post('password')),
+                'otp'         => rand(1000, 9999),
+                'valid'       => date('Y-m-d H:i:s', strtotime('+5 minutes')),
+                'created_at'  => date('Y-m-d H:i:s')
+                // 'school_name'  => $this->input->post('school_name'),
             ];
 
             $sms = "Dear users ".$post['otp']." is the OTP for your login AMIRAT APP. for any query pls contact : 9737987455. Thanks for visit 'gujarat ni amirat' by kappali.";
@@ -711,6 +713,8 @@ class Home extends CI_Controller {
         $data['title'] = 'you can write';
         $data['name'] = 'you_can_write';
         $data['questions'] = $question;
+        $data['winners'] = $this->main->getall('quiz_ans', 'name, school', ['winner' => 1]);
+        
         return $this->template->load(front('template'), front('you_can_writes'), $data);
         /* $this->load->model('write_model');
         $blog = $this->write_model->getBlogs($slug);

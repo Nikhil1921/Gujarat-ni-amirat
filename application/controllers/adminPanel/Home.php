@@ -67,6 +67,17 @@ class Home extends MY_Controller {
         return $this->template->load(admin('template'), admin('dashboard'), $data);
     }
 
+    public function ycw()
+    {
+        if ($this->input->post('content')) {
+            $this->main->delete('site_text', ['page' => 'ycw']);
+            $id = $this->main->add(['page' => 'ycw', 'content' => $this->input->post('content')], 'site_text');
+            flashMsg($id, "Content Updated Successfully.", "Content Not Updated. Try again.", admin());
+        }
+        
+        $this->index();
+    }
+
     public function profile()
     {
         $data['title'] = 'profile';

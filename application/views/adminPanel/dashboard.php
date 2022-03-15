@@ -66,3 +66,24 @@
 		</div>', 'class="text-dark"') ?>
 	</div>
 </div>
+<?= form_open(admin('home/ycw/')) ?>
+<div class="row">
+	<div class="col-md-10">
+		<div class="form-group">
+			<?= form_label('You can Write content', 'content') ?>
+			<?= form_textarea([
+			'name' => "content",
+			'class' => "form-control",
+			'id' => "content",
+			'value' => $this->main->check('site_text', ['page' => 'ycw'], 'content'),
+			'rows' => 4
+			]) ?>
+		</div>
+	</div>
+	<div class="col-md-2 mt-4 pt-2">
+		<?= form_button([ 'content' => 'UPDATE',
+          'type'  => 'submit',
+          'class' => 'btn btn-outline-primary col-12']) ?>
+	</div>
+</div>
+<?= form_close() ?>
