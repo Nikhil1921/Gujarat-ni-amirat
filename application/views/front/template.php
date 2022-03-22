@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 		<?= link_tag('assets/owl/dist/assets/owl.carousel.min.css','stylesheet','text/css') ?>
 		<?= link_tag('assets/owl/dist/assets/owl.theme.default.min.css','stylesheet','text/css') ?>
-		<?= link_tag('assets/css/main.css','stylesheet','text/css') ?>
+		<?= link_tag('assets/css/main.css?v=1.0.1','stylesheet','text/css') ?>
 	</head>
 	<body <?= (isset($cat)) ? 'style="background-color: '.$cat['background'].'"' : '' ?> >
 		<div class="sidemenu">

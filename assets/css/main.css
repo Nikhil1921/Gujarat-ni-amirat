@@ -6384,3 +6384,204 @@ body {
     font-size: 20px;
     font-weight: bold;
 }
+
+
+
+.img_note {
+    max-width: 40%;
+    margin: auto;
+    display: table;
+}
+
+.note_h5 {
+    color: #cca69a;
+}
+
+.note_h5 {
+    color: #cca69a;
+}
+
+.note_ul li {
+    float: left;
+    margin-right: 29px;
+    list-style: none;
+    color: #cca69a;
+}
+
+.social_icon {
+    color: black;
+    border: 1px solid #cca69a;
+    width: 35px;
+    height: 35px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    background: #cca69a;
+    font-size: 21px;
+}
+
+.note_ul {
+    padding-top: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----Media_Query-----*/
+
+@media screen and (max-width: 480px) {
+
+.container{
+  width: 100%;
+  margin: auto;
+}
+
+.container-fluid{
+  width: 100%;
+  margin: auto;
+}
+
+.text-dark.blink-title {
+margin-right: 18px !important;
+font-size: 15px !important;
+}
+
+.foot-menu {
+    padding-top: 0px;
+}
+
+.social-menu {
+    padding-top: 10px!important;
+}
+
+.footer-bottom .copywrite p {
+    margin: 0;
+}
+
+.contact-part {
+    background-color: #fce373;
+    padding: 0px 15px;
+}
+
+.contact p {
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    padding: 5px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.footer-bottom .copywrite {
+    padding: 0px 0px 0px 25px;
+}
+
+.contact h2 {
+    padding-top: 20px;
+    font-weight: 200 !important;
+    /* padding-bottom: 10px; */
+}
+
+.interview-part .latest-video-2 .video-part .video-1 .video-details, .video-2 .video-details {
+    padding: 10px 0px;
+    margin-right: 20px;
+}
+
+.video-details p {
+    margin: 0;
+}
+
+.interview-part .latest-video-2 h1 {
+    padding: 20px 0px;
+    color: #000;
+}
+
+.more-blogs {
+    padding-bottom: 0 !important;
+}
+
+.blog-slider {
+    padding: 0px 0px 20px 0px;
+}
+
+.blog-slider {
+    margin-top: 0px;
+    padding-left: 0px;
+    background-color: #cca69a;
+}
+
+.note_h5 {
+    color: #cca69a;
+    padding-left: 50px;
+    padding-top: 20px;
+}
+
+.note_ul {
+    padding-top: 12px;
+    padding-bottom: 45px;
+}
+
+}
+
+@media screen and (max-width: 375px) {
+    
+.container{
+  width: 100%;
+  margin: auto;
+}
+
+.container-fluid{
+  width: 100%;
+  margin: auto;
+}
+
+.foot-menu a {
+    text-decoration: none;
+    color: #000;
+    font-size: 15px !important;
+}
+
+.foot-menu li {
+    float: left;
+    padding-right: 9px;
+    padding-left: 4px;
+}
+
+.contact h2 {
+    padding-top: 1px;
+    font-weight: 200 !important;
+    /* padding-bottom: 10px; */
+}
+
+.text-dark.blink-title {
+    margin-right: 13px !important;
+    font-size: 12px !important;
+}
+
+.contact-part .newsletter h5 {
+    padding-top: 20px !important;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+.note_h5 {
+    color: #cca69a;
+    padding-left: 42px;
+    padding-top: 20px;
+}
+
+
+}
