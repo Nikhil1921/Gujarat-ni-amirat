@@ -40,6 +40,7 @@ class Quiz extends MY_Controller {
             $action = '<div class="ml-0 table-display row">'.anchor($this->redirect.'/view/'.e_id($row->id), '<i class="fa fa-eye"></i>', 'class="btn btn-outline-primary mr-2"');
             
             if(!$row->winner) $action .= anchor($this->redirect.'/winner/'.e_id($row->id), '<i class="fa fa-thumbs-up"></i>', 'class="btn btn-outline-success mr-2"');
+            else $action .= anchor($this->redirect.'/loser/'.e_id($row->id), '<i class="fa fa-thumbs-down"></i>', 'class="btn btn-outline-danger mr-2"');
             $action .= '</div>';
             $sub_array[] = $action;
 
@@ -75,6 +76,13 @@ class Quiz extends MY_Controller {
     public function winner($id)
     {
         $id = $this->main->update(['id' => d_id($id)], ['winner' => 1], $this->table);
+
+		flashMsg($id, ucwords($this->title)." Updated Successfully.", ucwords($this->title)." Not Updated. Try again.", $this->redirect);
+    }
+
+    public function loser($id)
+    {
+        $id = $this->main->update(['id' => d_id($id)], ['winner' => 0], $this->table);
 
 		flashMsg($id, ucwords($this->title)." Updated Successfully.", ucwords($this->title)." Not Updated. Try again.", $this->redirect);
     }

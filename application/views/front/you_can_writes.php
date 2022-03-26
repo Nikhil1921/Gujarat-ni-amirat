@@ -69,7 +69,7 @@
 							<thead>
 								<th>SR #</th>
 								<th>NAME</th>
-								<th>SCHOOL</th>
+								<th>SCHOOL / COLLEGE</th>
 							</thead>
 							<tbody>
 								<?php foreach($winners as $k => $v): ?>
